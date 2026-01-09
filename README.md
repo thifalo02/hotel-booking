@@ -27,7 +27,7 @@ npx playwright test
 npx playwright test --ui
 
 # Only the Home interaction
-npx playwright test --grep "Home - interação básica"
+npx playwright test --grep "Home - basic interaction"
 ```
 
 - Reports
@@ -71,31 +71,31 @@ ENV=PROD npx playwright test
 
 The config maps `ENV` to `BASE_URL_DEV/HML/PROD` (see [playwright.config.ts](playwright.config.ts)).
 
-## Estrutura
+## Structure
 
 - src/pages/
-  - BasePage.ts: classe base com helpers comuns.
-  - HomePage.ts: exemplo de página (playwright.dev).
+  - BasePage.ts: base class with common helpers.
+  - HomePage.ts: example page (playwright.dev).
 - tests/
-  - fixtures/test-base.ts: fixture que injeta as páginas nos testes.
-  - example.spec.ts: spec reescrita para usar POM.
-- playwright.config.ts: configuração do Playwright (inclui `baseURL`).
-- tsconfig.json: configurações TypeScript para o projeto.
-- docs/templates/: modelos para novos utils/fixtures/pages com comentários padronizados.
+  - fixtures/test-base.ts: fixture that injects pages into tests.
+  - example.spec.ts: spec rewritten to use POM.
+- playwright.config.ts: Playwright configuration (includes `baseURL`).
+- tsconfig.json: TypeScript configuration for the project.
+- docs/templates/: templates for new utils/fixtures/pages with standardized comments.
 
-## Comandos
+## Commands
 
 ```bash
-# Instalar navegadores necessários do Playwright
+# Install Playwright browsers
 npm run install:deps
 
-# Rodar todos os testes
+# Run all tests
 npm test
 
-# UI runner (útil durante o desenvolvimento)
+# UI runner (useful during development)
 npm run test:ui
 
-# Abrir o último relatório
+# Open the latest report
 npm run show-report
 ```
 

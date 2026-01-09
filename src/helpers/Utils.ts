@@ -53,7 +53,7 @@ export class Utils {
             const maxAttr = await getMaxAttr(minThumb);
             const targetMin = Math.max(minAttr, Math.min(maxAttr, minValue));
             await minThumb.evaluate((el: any) => el?.focus?.({ preventScroll: true }));
-            // Ajusta pelo teclado sem usar End/Home para evitar qualquer scroll lateral
+            // Adjust via keyboard without using End/Home to avoid any horizontal scroll
             for (let i = 0; i < 3000; i++) {
                 const now = await getNow(minThumb);
                 if (!Number.isFinite(now) || now === targetMin) break;
