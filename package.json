@@ -1,0 +1,25 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "show-report": "playwright show-report",
+    "install:deps": "playwright install",
+    "setup": "node scripts/setup.js",
+    "test:dev": "ENV=DEV playwright test",
+    "test:hml": "ENV=HML playwright test",
+    "test:prod": "ENV=PROD playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.3",
+    "dotenv": "^16.6.1"
+  }
+}
