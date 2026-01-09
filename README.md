@@ -99,65 +99,6 @@ npm run test:ui
 npm run show-report
 ```
 
-## Padrões de Projeto
-
-- Crie uma classe por página em `src/pages`.
-- Coloque ações e asserts específicos da página dentro do Page Object.
-- Use fixtures em `tests/fixtures` para injetar page objects tipados nos testes.
-- Evite duplicar seletores nos testes – centralize nos Page Objects.
-
-## Doc Comments Guidelines (English)
-
-- Purpose: Add clear, concise JSDoc comments to new utilities, fixtures, and pages.
-- Tone: Objective, one or two sentences describing intent and behavior.
-- Where:
-  - Pages: Class summary; each public method with params and side effects.
-  - Utils: Class summary; each helper method with input/output.
-  - Fixtures: Brief explanation of provided fixtures and their purpose.
-- Examples:
-
-```ts
-/**
- * HomePage encapsulates interactions with the Home screen.
- * Provides flows for search form completion and result filtering.
- */
-export class HomePage extends BasePage {
-  /**
-   * Navigates to Home and waits for stable load states.
-   */
-  async open() { /* ... */ }
-
-  /**
-   * Fills destination; selects a suggestion if provided.
-   * @param primary Main destination text.
-   * @param secondary Optional suggestion (regex matched).
-   */
-  async setGoingTo(primary: string, secondary?: string) { /* ... */ }
-}
-```
-
-```ts
-/**
- * Utils centralizes resilient UI helpers.
- */
-export class Utils {
-  /** Returns first visible locator or null. */
-  static async waitForAnyVisible(locators: Locator[]) { /* ... */ }
-}
-```
-
-```ts
-/**
- * Extends Playwright's test with project fixtures.
- * Provides a `homePage` fixture to simplify interactions across specs.
- */
-export const test = base.extend<Fixtures>({ /* ... */ });
-```
-
-## Templates
-
-- See `docs/templates` for starter files to keep comments consistent.
-
 ## Project Mindmap
 
 ```
@@ -189,4 +130,4 @@ test-results/
 
 ---
 
-Assinado por: Thiago Maciel
+Author: Thiago Maciel
