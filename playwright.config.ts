@@ -22,7 +22,7 @@ const resolvedBaseURL = ENV && (ENV in envBaseURLs)
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  // Sem limite de tempo para cada teste
+  // No time limit per test
   timeout: 120_000,
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -39,7 +39,7 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     baseURL: resolvedBaseURL,
-    // Sem timeouts de ação/navegação
+    // No action/navigation timeouts
     actionTimeout: 0,
     navigationTimeout: 0,
 
@@ -48,7 +48,7 @@ export default defineConfig({
 
     headless: !!process.env.CI
   },
-  // Sem timeout para expect
+  // No timeout for expect
   expect: { timeout: 0 },
 
   /* Configure projects for major browsers */

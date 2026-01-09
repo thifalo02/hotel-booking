@@ -1,7 +1,7 @@
 import { test, expect } from './fixtures/test-base';
 
-test.describe('Home - interação básica', () => {
-    test('preencher Going To, Dates e Travelers', async ({ homePage }) => {
+test.describe('Home - basic interaction', () => {
+    test('fill Going To, Dates and Travelers', async ({ homePage }) => {
         await homePage.open();
 
         const minRangePrice = 100;

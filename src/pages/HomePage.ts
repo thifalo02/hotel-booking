@@ -30,7 +30,7 @@ export class HomePage extends BasePage {
      * @param secondary Optional suggestion text to click (regex matched, case-insensitive).
      */
     async setGoingTo(primary: string, secondary?: string) {
-        // Usa apenas o locator mais forte: trigger + input editável
+        // Use only the strongest locator: trigger + editable input
         await this.goingToTrigger().click({ force: true }).catch(() => { });
         const input = this.page.locator(HOME_SELECTORS.searchForm.location.input.editable).first();
         await input.fill(primary).catch(() => { });
@@ -136,15 +136,15 @@ export class HomePage extends BasePage {
      * Waits for any loading indicators to disappear before interacting.
      */
     async selectPinMap() {
-        // Aguarda o container do mapa visível
+        // Wait until the map container is visible
         const mapRoot = this.page.locator(HOME_SELECTORS.results.map.root).first();
         await mapRoot.waitFor({ state: 'visible' });
 
-        // Aguarda o loader de resultados sumir da tela (barra de progresso)
+        // Wait for the results loader to disappear (progress bar)
         const loadingSelector = `${HOME_SELECTORS.results.loading.loadingBarRoot}, ${HOME_SELECTORS.results.loading.loadingBarSection}`;
         await this.page.waitForFunction((sel) => !document.querySelector(sel), loadingSelector, { timeout: 120_000 });
 
-        // Foca o centro do mapa com um clique simples
+        // Focus the map center with a simple click
         const box = await mapRoot.boundingBox();
         if (!box) return;
         await mapRoot.click({ position: { x: box.width / 2, y: box.height / 2 } });
@@ -152,7 +152,7 @@ export class HomePage extends BasePage {
             await this.page.keyboard.press('+');
         }
 
-        // Após o zoom, aguarda aparecer pelo menos um pin e clica no primeiro visível
+        // After zooming, wait for at least one pin and click the first visible
         const pins = this.page.locator(HOME_SELECTORS.results.map.pin);
         try {
             const pinSelector = HOME_SELECTORS.results.map.pin;
@@ -167,7 +167,7 @@ export class HomePage extends BasePage {
                 }
             }
         } catch {
-            // Em mapas canvas-only, não há elementos de pin clicáveis no DOM
+            // In canvas-only maps, there are no clickable pin elements in the DOM
         }
     }
 
